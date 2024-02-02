@@ -1,0 +1,77 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://dcpdq5l3yfrha"]
+
+[ext_resource type="Texture2D" uid="uid://cu6amtewfrdri" path="res://Images/First Enemy.png" id="1_ule66"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2pvi"]
+atlas = ExtResource("1_ule66")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a44es"]
+atlas = ExtResource("1_ule66")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nttox"]
+atlas = ExtResource("1_ule66")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rr05"]
+atlas = ExtResource("1_ule66")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksm23"]
+atlas = ExtResource("1_ule66")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwf4h"]
+atlas = ExtResource("1_ule66")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anckx"]
+atlas = ExtResource("1_ule66")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slx0h"]
+atlas = ExtResource("1_ule66")
+region = Rect2(896, 0, 128, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2pvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a44es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nttox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rr05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksm23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwf4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anckx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slx0h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]

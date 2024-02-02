@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0w342wn2khy5"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_hkyiq"]
+[ext_resource type="Texture2D" uid="uid://dscg5x5vu4byv" path="res://Images/enemy.png" id="1_opwqu"]
+[ext_resource type="Texture2D" uid="uid://y68f7n1mgi0d" path="res://Images/enemy_attack.png" id="3_g54r6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6b5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_g54r6")
+}],
+"loop": true,
+"name": &"attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_opwqu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2o73"]
+size = Vector2(76, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0s43"]
+size = Vector2(76, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pw0nq"]
+radius = 325.002
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dprag"]
+height = 68.7836
+
+[node name="enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_hkyiq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.8147e-06, 0)
+scale = Vector2(0.255187, 0.236162)
+sprite_frames = SubResource("SpriteFrames_u6b5f")
+animation = &"attacking"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y2o73")
+
+[node name="body_hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body_hitbox"]
+shape = SubResource("RectangleShape2D_k0s43")
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+shape = SubResource("CircleShape2D_pw0nq")
+
+[node name="attack_hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_hitbox"]
+position = Vector2(39, 0)
+rotation = 1.06814
+shape = SubResource("CapsuleShape2D_dprag")
+disabled = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -45.0
+offset_top = -72.0
+offset_right = 46.0
+offset_bottom = -45.0
+
+[connection signal="body_entered" from="body_hitbox" to="." method="_on_body_hitbox_body_entered"]
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="attack_hitbox" to="." method="_on_attack_hitbox_body_entered"]

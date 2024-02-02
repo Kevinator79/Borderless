@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://rdyigygn2gri"]
+
+[ext_resource type="PackedScene" uid="uid://crqls04drs0i4" path="res://Prefabs/Player/player.tscn" id="1_e0ts8"]
+[ext_resource type="PackedScene" uid="uid://dy2b4hj4ifdpo" path="res://World/Tiles.tscn" id="1_x44tn"]
+[ext_resource type="PackedScene" uid="uid://cgc5hqv74ikjp" path="res://Prefabs/Items/Item.tscn" id="4_mji1h"]
+[ext_resource type="PackedScene" uid="uid://kl6ql8f0l7m0" path="res://Dialog/Dialog_Box.tscn" id="5_6tsoi"]
+[ext_resource type="PackedScene" uid="uid://dqwy8xrqnf0ms" path="res://Dialog/DialogArea.tscn" id="5_70107"]
+[ext_resource type="PackedScene" uid="uid://c0w342wn2khy5" path="res://Prefabs/Enemies/enemy.tscn" id="5_wqkpl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq2n0"]
+size = Vector2(674, 276)
+
+[node name="World" type="Node2D"]
+
+[node name="GroundLayer" type="Node2D" parent="."]
+
+[node name="TileMap" parent="GroundLayer" instance=ExtResource("1_x44tn")]
+layer_0/tile_data = PackedInt32Array(262144, 65536, 0, 262145, 131072, 0, 262146, 131072, 0, 262147, 131072, 0, 262148, 131072, 0, 262149, 131072, 0, 262150, 131072, 0, 262151, 131072, 0, 262152, 131072, 0, 262153, 131072, 0, 262154, 131072, 0, 262155, 131072, 0, 262156, 131072, 0, 262157, 131072, 0, 262158, 131072, 0, 262159, 131072, 0, 262160, 131072, 0, 262161, 131072, 0, 262162, 131072, 0, 262163, 131072, 0, 262164, 131072, 0, 262165, 131072, 0, 262166, 131072, 0, 262167, 131072, 0, 262168, 131072, 0, 262169, 131072, 0, 262170, 131072, 0, 262171, 131072, 0, 262172, 131072, 0, 262173, 131072, 0, 262174, 131072, 0, 262175, 131072, 0, 262176, 131072, 0, 262177, 131072, 0, 262178, 131072, 0, 262179, 131072, 0, 262180, 131072, 0, 262181, 131072, 0, 262182, 131072, 0, 262183, 131072, 0, 262184, 131072, 0, 262185, 131072, 0, 262186, 131072, 0, 262187, 131072, 0, 262188, 131072, 0, 262189, 131072, 0, 262190, 131072, 0, 262191, 131072, 0, 262192, 131072, 0, 262193, 131072, 0, 262194, 131072, 0, 262195, 131072, 0, 262196, 131072, 0, 262197, 131072, 0, 262198, 131072, 0, 262199, 131072, 0, 262200, 131072, 0, 262201, 131072, 0, 262202, 131072, 0, 262203, 131072, 0, 262204, 131072, 0, 262205, 131072, 0, 262206, 131072, 0, 327690, 1507328, 0, 327691, 1507328, 0, 327692, 1507328, 0, 327693, 1507328, 0, 327694, 1507328, 0, 327695, 1507328, 0, 327696, 1507328, 0, 327697, 1507328, 0, 327698, 1507328, 0, 327699, 1507328, 0, 327700, 1507328, 0, 327701, 1507328, 0, 327702, 1507328, 0, 327703, 1507328, 0, 327704, 1507328, 0, 327705, 1507328, 0, 327706, 1507328, 0, 327707, 1507328, 0, 327708, 1507328, 0, 327709, 1507328, 0, 327710, 1507328, 0, 327711, 1507328, 0, 327712, 1507328, 0, 327713, 1507328, 0, 327714, 1507328, 0, 327715, 1507328, 0, 327716, 1507328, 0, 327717, 1507328, 0, 327718, 1507328, 0, 327719, 1507328, 0, 327720, 1507328, 0, 327721, 1507328, 0, 327722, 1507328, 0, 327723, 1507328, 0, 327724, 1507328, 0, 327725, 1507328, 0, 327726, 1507328, 0, 327727, 1507328, 0, 327728, 1507328, 0, 327729, 1507328, 0, 327730, 1507328, 0, 327731, 1507328, 0, 327732, 1507328, 0, 327733, 1507328, 0, 327734, 1507328, 0, 327735, 1507328, 0, 327736, 1507328, 0, 327737, 1507328, 0, 327738, 1507328, 0, 327739, 1507328, 0, 327740, 1507328, 0, 327741, 1507328, 0, 327742, 1507328, 0, 327689, 1507328, 0, 327688, 1507328, 0, 327687, 1507328, 0, 327686, 1507328, 0, 327685, 1507328, 0, 327684, 1507328, 0, 327683, 1507328, 0, 327682, 1507328, 0, 327681, 1507328, 0, 327680, 1507328, 0)
+
+[node name="DropLayer" type="Node2D" parent="."]
+
+[node name="Item" parent="DropLayer" instance=ExtResource("4_mji1h")]
+visible = false
+position = Vector2(384, 512)
+amount = 1000
+
+[node name="EntityLayer" type="Node2D" parent="."]
+
+[node name="Player" parent="EntityLayer" instance=ExtResource("1_e0ts8")]
+position = Vector2(129, 477)
+collision_mask = 3
+
+[node name="DialogBox" parent="EntityLayer/Player" instance=ExtResource("5_6tsoi")]
+unique_name_in_owner = true
+offset_left = -374.0
+offset_top = -312.0
+offset_right = 426.0
+offset_bottom = -52.0
+
+[node name="Enemy" parent="EntityLayer" instance=ExtResource("5_wqkpl")]
+position = Vector2(1351, 476)
+
+[node name="TopLayer" type="Node2D" parent="."]
+
+[node name="DialogArea" parent="TopLayer" instance=ExtResource("5_70107")]
+position = Vector2(629, 588)
+collision_mask = 3
+dialog = ["So the text works here"]
+
+[node name="CollisionShape2D" parent="TopLayer/DialogArea" index="0"]
+position = Vector2(-307, -85)
+shape = SubResource("RectangleShape2D_gq2n0")
+
+[connection signal="body_entered" from="TopLayer/DialogArea" to="TopLayer/DialogArea" method="_on_body_entered"]
+[connection signal="body_exited" from="TopLayer/DialogArea" to="TopLayer/DialogArea" method="_on_body_exit"]
+
+[editable path="EntityLayer/Player/DialogBox"]
+[editable path="TopLayer/DialogArea"]

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgc5hqv74ikjp"]
+
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_bmxts"]
+[ext_resource type="Resource" uid="uid://bh8lwxl7q40uu" path="res://Inventory/Items/coin.tres" id="2_jr3gq"]
+[ext_resource type="Texture2D" uid="uid://dthg53pdu37km" path="res://Images/coin.png" id="3_y60we"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfbyg"]
+radius = 30.0
+
+[node name="Item" type="Area2D" groups=["items"]]
+script = ExtResource("1_bmxts")
+item = ExtResource("2_jr3gq")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pfbyg")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_y60we")
+
+[node name="pickup" type="AudioStreamPlayer2D" parent="."]

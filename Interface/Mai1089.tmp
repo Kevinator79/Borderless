@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://se64obp0xwcj"]
+
+[ext_resource type="PackedScene" uid="uid://cxsn8mputmsvg" path="res://Prefabs/Interface/QuitButtonPrefab.tscn" id="1_seokn"]
+[ext_resource type="Theme" uid="uid://bsha7f3816gdw" path="res://Prefabs/Interface/ButtonTheme.tres" id="2_ypftn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="QuitButtonPrefab" parent="." instance=ExtResource("1_seokn")]
+offset_left = 1019.0
+offset_top = 580.0
+offset_right = 1147.0
+offset_bottom = 644.0
+theme = ExtResource("2_ypftn")

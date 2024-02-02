@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://rdyigygn2gri"]
+
+[ext_resource type="PackedScene" uid="uid://crqls04drs0i4" path="res://Prefabs/Player/player.tscn" id="1_e0ts8"]
+[ext_resource type="PackedScene" uid="uid://duad4n2l0fytd" path="res://Prefabs/Items/Chest.tscn" id="4_3uvt1"]
+[ext_resource type="PackedScene" uid="uid://cgc5hqv74ikjp" path="res://Prefabs/Items/Item.tscn" id="4_mji1h"]
+[ext_resource type="Texture2D" uid="uid://bgrv5s038hxl0" path="res://Images/World terrain.png" id="4_sov23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6qph"]
+size = Vector2(1180.5, 34)
+
+[node name="World" type="Node2D"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(0, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor2" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(128, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor3" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(256, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor4" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(384, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor5" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(512, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor6" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(640, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor7" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(768, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor8" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(896, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor9" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(1024, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="Floor10" type="Sprite2D" parent="StaticBody2D2"]
+y_sort_enabled = true
+position = Vector2(1152, 512)
+texture = ExtResource("4_sov23")
+hframes = 22
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(520.25, 559)
+shape = SubResource("RectangleShape2D_b6qph")
+debug_color = Color(1, 1, 1, 0.196078)
+
+[node name="Player" parent="." instance=ExtResource("1_e0ts8")]
+position = Vector2(131, 477)
+
+[node name="Item" parent="." instance=ExtResource("4_mji1h")]
+position = Vector2(384, 512)
+amount = 1000
+
+[node name="Chest" parent="." instance=ExtResource("4_3uvt1")]
+position = Vector2(577, 511)
+item_type = "Coin"
+amount = 1

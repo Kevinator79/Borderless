@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://vh5votwbtv5y"]
+
+[ext_resource type="PackedScene" uid="uid://cgc5hqv74ikjp" path="res://Items/Item.tscn" id="1_u4do8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aa3kb"]
+size = Vector2(39, 31)
+
+[node name="ChestItem" type="RigidBody2D"]
+
+[node name="Item" parent="." instance=ExtResource("1_u4do8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_aa3kb")

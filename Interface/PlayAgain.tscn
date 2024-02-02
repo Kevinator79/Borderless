@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3 uid="uid://b53oe7k8mpb1f"]
+
+[ext_resource type="Theme" uid="uid://bsha7f3816gdw" path="res://Interface/ButtonTheme.tres" id="1_dynld"]
+[ext_resource type="Script" path="res://Interface/GameOver.gd" id="2_i7rdq"]
+[ext_resource type="AudioStream" uid="uid://dswl7gusvcc14" path="res://Sounds/menuHover.mp3" id="3_q7jfn"]
+[ext_resource type="AudioStream" uid="uid://drsyvciou7p2o" path="res://Sounds/menuPress.mp3" id="4_7et4o"]
+
+[node name="PlayAgain" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_dynld")
+script = ExtResource("2_i7rdq")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(496, 100)
+layout_mode = 0
+offset_left = 328.0
+offset_top = 128.0
+offset_right = 824.0
+offset_bottom = 228.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 431.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 70
+text = "Game over"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 240.0
+offset_right = 736.0
+offset_bottom = 632.0
+
+[node name="PlayAgain" type="Button" parent="Panel2"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 40.0
+offset_right = 296.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Play again"
+
+[node name="TitleButton" type="Button" parent="Panel2"]
+offset_left = 24.0
+offset_top = 160.0
+offset_right = 296.0
+offset_bottom = 230.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Title"
+
+[node name="Quit" type="Button" parent="Panel2"]
+offset_left = 24.0
+offset_top = 280.0
+offset_right = 296.0
+offset_bottom = 350.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Quit"
+
+[node name="AudioHover" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(600, 350)
+stream = ExtResource("3_q7jfn")
+
+[node name="AudioClick" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(600, 350)
+stream = ExtResource("4_7et4o")
+
+[connection signal="button_down" from="Panel2/PlayAgain" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Panel2/PlayAgain" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Panel2/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="button_down" from="Panel2/TitleButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Panel2/TitleButton" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Panel2/TitleButton" to="." method="_on_titleScreen_pressed"]
+[connection signal="button_down" from="Panel2/Quit" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="Panel2/Quit" to="." method="_on_btn_mouse_entered"]
+[connection signal="pressed" from="Panel2/Quit" to="." method="_on_quit_pressed"]
