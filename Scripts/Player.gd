@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var health_bar = $HealthBar
 @onready var animate = $Marker2D/AnimationPlayer
 @onready var playAgainScreen = $PlayAgain
+@onready var jump = $Jump
+@onready var walk = $Walk
 @export var inv: Inv
 
 var level : int = 1
@@ -43,6 +45,7 @@ func handle_movement():
 	if Input.is_action_just_pressed("jump") and on_ground:
 		velocity.y -= jump_force
 		is_jumping = true
+		jump.play()
 	
 	var move_direction = 0
 	if Input.is_action_pressed("move_right"):

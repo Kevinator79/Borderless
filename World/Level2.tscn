@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://cng1rd1m3aufl"]
+
+[ext_resource type="PackedScene" uid="uid://drpclnu2nhws5" path="res://World/Level2Tilemap.tscn" id="1_bmxiq"]
+[ext_resource type="PackedScene" uid="uid://crqls04drs0i4" path="res://Player/player.tscn" id="2_reflu"]
+[ext_resource type="PackedScene" uid="uid://kl6ql8f0l7m0" path="res://Dialog/Dialog_Box.tscn" id="3_jewd2"]
+[ext_resource type="PackedScene" uid="uid://bbjeg6pt0eqte" path="res://Enemies/Boss.tscn" id="4_g42go"]
+[ext_resource type="PackedScene" uid="uid://rcij3wmmtg88" path="res://Portals/portal.tscn" id="5_bpgce"]
+[ext_resource type="PackedScene" uid="uid://b505r4127qdka" path="res://NPC/NPC.tscn" id="6_ixsix"]
+[ext_resource type="Script" path="res://World/AudioNode.gd" id="7_valwr"]
+[ext_resource type="AudioStream" uid="uid://rw4josolvo3v" path="res://Sounds/BossAreaIntro.mp3" id="8_4da13"]
+[ext_resource type="AudioStream" uid="uid://dnqhnprvc5hpm" path="res://Sounds/bossintro.mp3" id="8_rtna5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu238"]
+size = Vector2(25, 398)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edd1v"]
+size = Vector2(138, 206)
+
+[node name="Level2" type="Node2D"]
+
+[node name="GroundLayer" type="Node2D" parent="."]
+
+[node name="Level2Tilemap" parent="GroundLayer" instance=ExtResource("1_bmxiq")]
+
+[node name="Other Collision" type="Node2D" parent="GroundLayer"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="GroundLayer/Other Collision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/Other Collision/StaticBody2D"]
+position = Vector2(2440, 450)
+shape = SubResource("RectangleShape2D_wu238")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="GroundLayer/Other Collision"]
+position = Vector2(-2373, -13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundLayer/Other Collision/StaticBody2D2"]
+position = Vector2(2440, 450)
+shape = SubResource("RectangleShape2D_wu238")
+
+[node name="DropLayer" type="Node2D" parent="."]
+position = Vector2(42, 0)
+
+[node name="EntityLayer" type="Node2D" parent="."]
+
+[node name="Player" parent="EntityLayer" instance=ExtResource("2_reflu")]
+position = Vector2(498, 514)
+
+[node name="Dialog_Box" parent="EntityLayer/Player" instance=ExtResource("3_jewd2")]
+offset_left = -390.0
+offset_top = -348.0
+offset_right = 410.0
+offset_bottom = -88.0
+
+[node name="dialog_text" parent="EntityLayer/Player/Dialog_Box" index="0"]
+offset_left = 54.0
+offset_top = 66.0
+offset_right = -42.0
+offset_bottom = -62.1
+text = ""
+
+[node name="Boss" parent="EntityLayer" instance=ExtResource("4_g42go")]
+position = Vector2(5038, 2412)
+scale = Vector2(4.02328, 4.02328)
+
+[node name="Npc" parent="EntityLayer" instance=ExtResource("6_ixsix")]
+position = Vector2(1221, 546)
+scale = Vector2(1.4947, 1.4947)
+
+[node name="TopLayer" type="Node2D" parent="."]
+
+[node name="Portal" parent="TopLayer" instance=ExtResource("5_bpgce")]
+position = Vector2(5904, 2606)
+
+[node name="AudioNode" type="Node2D" parent="."]
+script = ExtResource("7_valwr")
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="AudioNode"]
+stream = ExtResource("8_rtna5")
+autoplay = true
+
+[node name="AreaIntro" type="AudioStreamPlayer" parent="AudioNode"]
+stream = ExtResource("8_4da13")
+volume_db = 2.0
+autoplay = true
+
+[node name="Area2D" type="Area2D" parent="AudioNode"]
+position = Vector2(1369, 520)
+scale = Vector2(1, 4.23601)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AudioNode/Area2D"]
+shape = SubResource("RectangleShape2D_edd1v")
+
+[node name="Area2D2" type="Area2D" parent="AudioNode"]
+position = Vector2(3829, 2567)
+scale = Vector2(1, 4.23601)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AudioNode/Area2D2"]
+shape = SubResource("RectangleShape2D_edd1v")
+
+[connection signal="body_entered" from="AudioNode/Area2D" to="AudioNode" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="AudioNode/Area2D2" to="AudioNode" method="_on_area_2d_2_body_entered"]
+
+[editable path="EntityLayer/Player/Dialog_Box"]

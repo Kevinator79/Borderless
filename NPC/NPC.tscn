@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://b505r4127qdka"]
+
+[ext_resource type="Texture2D" uid="uid://cyqhvska86pr2" path="res://Images/NPC.png" id="1_seb7t"]
+[ext_resource type="PackedScene" uid="uid://dqwy8xrqnf0ms" path="res://Dialog/DialogArea.tscn" id="2_8n7sb"]
+
+[sub_resource type="Animation" id="Animation_gyoq4"]
+resource_name = "Default"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_d7pwr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gc2ll"]
+_data = {
+"Default": SubResource("Animation_gyoq4"),
+"RESET": SubResource("Animation_d7pwr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvsnv"]
+size = Vector2(89, 61)
+
+[node name="Npc" type="Sprite2D"]
+texture = ExtResource("1_seb7t")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gc2ll")
+}
+autoplay = "Default"
+
+[node name="DialogArea" parent="." instance=ExtResource("2_8n7sb")]
+dialog = ["I am the hat of light.", "I think I saw something scary over that jump.", "Can you please take care of it so I can go to town?", "Thank you so much!"]
+
+[node name="CollisionShape2D" parent="DialogArea" index="0"]
+position = Vector2(2.5, 20.5)
+shape = SubResource("RectangleShape2D_wvsnv")
+
+[editable path="DialogArea"]

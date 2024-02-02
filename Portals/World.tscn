@@ -1,13 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://rdyigygn2gri"]
+[gd_scene load_steps=8 format=3 uid="uid://rdyigygn2gri"]
 
 [ext_resource type="PackedScene" uid="uid://crqls04drs0i4" path="res://Player/player.tscn" id="1_e0ts8"]
 [ext_resource type="PackedScene" uid="uid://dy2b4hj4ifdpo" path="res://World/Tiles.tscn" id="1_x44tn"]
 [ext_resource type="PackedScene" uid="uid://rcij3wmmtg88" path="res://Portals/portal.tscn" id="2_b4ec4"]
 [ext_resource type="PackedScene" uid="uid://cgc5hqv74ikjp" path="res://Items/Item.tscn" id="4_mji1h"]
-[ext_resource type="PackedScene" uid="uid://duad4n2l0fytd" path="res://Items/Chest.tscn" id="4_rrkew"]
 [ext_resource type="PackedScene" uid="uid://kl6ql8f0l7m0" path="res://Dialog/Dialog_Box.tscn" id="5_6tsoi"]
-[ext_resource type="PackedScene" uid="uid://dqwy8xrqnf0ms" path="res://Dialog/DialogArea.tscn" id="5_70107"]
-[ext_resource type="Script" path="res://Scripts/Chest.gd" id="5_h51th"]
 [ext_resource type="PackedScene" uid="uid://c0w342wn2khy5" path="res://Enemies/enemy.tscn" id="5_wqkpl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xx4pv"]
@@ -26,29 +23,9 @@ layer_2/name = "Follage"
 layer_2/tile_data = PackedInt32Array(262151, 655360, 0, 262153, 720896, 0, 262155, 655360, 0, 131088, 524288, 0, 196625, 589824, 0, 131092, 524288, 0, 65549, 524288, 536870912, 131082, 524288, 536870912, 131079, 524288, 0, 196612, 524288, 0, 131073, 524288, 0, 131074, 589824, 536870912, 65541, 589824, 536870912)
 
 [node name="Portal" parent="GroundLayer" instance=ExtResource("2_b4ec4")]
-position = Vector2(1333, 564)
-scale = Vector2(0.5, 0.5)
+position = Vector2(1345, 566)
+scale = Vector2(0.64, 0.51999)
 level = "res://World/Level2.tscn"
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="GroundLayer/Portal"]
-position = Vector2(14, 74)
-scale = Vector2(2, 2)
-amount = 10
-lifetime = 3.0
-speed_scale = 0.5
-emission_shape = 1
-emission_sphere_radius = 64.0
-gravity = Vector2(0, -52)
-angular_velocity_min = -96.0
-angular_velocity_max = 96.0
-linear_accel_min = -20.0
-linear_accel_max = 20.0
-damping_max = 20.0
-angle_min = -20.0
-angle_max = 20.0
-scale_amount_min = 2.0
-scale_amount_max = 2.0
-color = Color(0, 0, 0, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="GroundLayer"]
 position = Vector2(62, 496)
@@ -71,10 +48,6 @@ visible = false
 position = Vector2(384, 512)
 amount = 1000
 
-[node name="Chest" parent="DropLayer" instance=ExtResource("4_rrkew")]
-position = Vector2(1098, 563)
-script = ExtResource("5_h51th")
-
 [node name="EntityLayer" type="Node2D" parent="."]
 
 [node name="enemy" parent="EntityLayer" instance=ExtResource("5_wqkpl")]
@@ -95,7 +68,5 @@ offset_right = -49.0
 text = ""
 
 [node name="TopLayer" type="Node2D" parent="."]
-
-[node name="DialogArea" parent="TopLayer" instance=ExtResource("5_70107")]
 
 [editable path="EntityLayer/Player/Dialog_Box"]

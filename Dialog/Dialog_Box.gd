@@ -32,12 +32,11 @@ func update_dialog_text():
 	dialog_text.text = text
 
 func hide_dialog():
-	# Hide dialog box and text
 	hide()
 	emit_signal("dialog_ended")
 
 func _input(event):
-	if event.is_action_pressed("ui_up"):
+	if event.is_action_pressed("ui_up") and current_dialog.size() > 0:
 		if current_index <= len(current_dialog):
 			update_dialog_text()
 		else:
